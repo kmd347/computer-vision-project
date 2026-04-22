@@ -113,3 +113,54 @@ However, both models exhibit similar prediction patterns, suggesting that much o
 Despite strong overall performance, both models struggle to accurately predict the highest quality class (class 2). The confusion matrix shows that many of these samples are misclassified as the middle quality class (class 1).
 
 The issue is likely due to class imbalance, as the highest quality class has significantly fewer examples compared to the other classes. As a result, the models are biased toward predicting the more common classes and have difficulty learning distinct patterns for the rare class. 
+
+
+
+# Coffee Quality Classification (Check-In 3)
+In check-in 3, I wanted to extend my project from more structured, tabular data into a more computer vision-based approach using image data of coffee beans. 
+
+Instead of relying strictly on numerical features, the model now takes an image of coffee beans as input and predicts the quality grade directly from visual characteristics. 
+
+This extension uses transfer learning via a pretrained CNN which serves as the "advanced component" for the third check-in.
+
+### Methodology 
+I used a pretrained ResNet18 CNN as a feature extractor. 
+- The final classification layer of ResNet was removed 
+- The model outputs high-level feature vectors representing each image 
+- These features are then used as input into a logistic regression classifier
+
+As a result I was able to create a two-stage pipeline: 
+Image --> ResNet --> Logistic Regression --> Prediction
+
+### Dataset 
+The dataset I used, called the CBD Coffee Bean Dataset obtained from the Amrita Vishwa Vidyapeetham School of Arts and Sciences in India, contains labeled images of coffee beans grouped by quality grade (ex. A, AA, PB-II, Bulk, etc). The dataset was originally created to support automated coffee grading where visual features like size, uniformity and defects can be used to assess quality. This is similar to how experts evaluate beans in real-world production.
+
+In order to improve efficiency, I made sure a subset of images from each class was used during training. 
+
+
+### Results 
+The image-based model achieved an accuracy of approx. 80% on the test set. While this is slightly lower than the tabular models it shows that visual features alone contain some meaningful signals for predicting coffee quality.
+
+### Comparison to Previous Models 
+Compared to the earlier tabular models:
+- The tabular models performed better (approx. 88% accuracy)
+- The image model introduces a new modality (vision)
+- It captures visual characteristics that are not present in structured data 
+
+My new extension shows how different data modalities can impact model performance and highlights the tradeoffs between structured / unstructured data.
+
+### Demo Application 
+To demonstrate my model, I built a Streamlit app where users can upload an image of coffee beans and receive a predicted quality grade. 
+
+This gives an interactive way to visualize model behavior and test predictions on new images as well. 
+
+### Ablation
+To test the effect of dataset size I changed the number of images per class (10,20,30) while keeping the remainder of the pipeline fixed. The results showed inconsistent performance the more data that was added which suggests that the model finds it tough to effectively use additional / more variable images. 
+
+### Failure Analysis
+The model performs worse on images where beans overlap or lighting is more inconsistent in nature. These conditions undoubtedly made it tougher for the model to identify clear visual patterns. This therefore demonstrates a limitation in the feature extraction approach. 
+
+### Future Work 
+In future work, I would replace the current fixed feature approach with a fine-tuned CNN and increase the dataset size as well. This would probably improve the model's ability to capture more meaningful visual features + generalize better. 
+
+### Dataset Access 
