@@ -164,3 +164,12 @@ The model performs worse on images where beans overlap or lighting is more incon
 In future work, I would replace the current fixed feature approach with a fine-tuned CNN and increase the dataset size as well. This would probably improve the model's ability to capture more meaningful visual features + generalize better. 
 
 ### Dataset Access 
+The dataset used in this project is publicly available online:
+
+https://data.mendeley.com/datasets/52877z55vr/1
+
+Due to size limitations, the dataset is not included in this repository.
+
+To run the project, download the dataset and place it in:
+
+CBD_Coffee Bean Dataset/
