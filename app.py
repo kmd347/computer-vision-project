@@ -75,7 +75,7 @@ from sklearn.linear_model import LogisticRegression
 X = []
 y = []
 
-data_dir = "CBD_Coffee Bean Dataset/CBD_Coffee Bean Dataset"
+data_dir = "computer-vision-project-main/CBD_Coffee Bean Dataset"
 
 for label in os.listdir(data_dir):
     folder_path = os.path.join(data_dir, label)
@@ -101,7 +101,7 @@ y = np.array(y)
 clf = LogisticRegression(max_iter=1000)
 clf.fit(X, y)
 
-#streamlit UI
+#streamlit
 st.title("☕ Coffee Bean Classifier")
 
 st.write("Upload a coffee bean image and the model will predict its quality grade.")
