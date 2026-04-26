@@ -1,3 +1,5 @@
+# Grading Coffee Bean Quality: A Computer Vision Approach
+
 # Coffee Quality Classification (Check-In 1)
 
 ## 1. Problem Framing + Scope
@@ -137,6 +139,11 @@ The dataset I used, called the CBD Coffee Bean Dataset obtained from the Amrita 
 
 In order to improve efficiency, I made sure a subset of images from each class was used during training. 
 
+The dataset is not included in the repository due to size. It can be downloaded from:
+https://data.mendeley.com/datasets/52877z55vr/1 
+
+Place the dataset folder in the root directory as:
+CBD_Coffee Bean Dataset/
 
 ### Results 
 The image-based model achieved an accuracy of approx. 80% on the test set. While this is slightly lower than the tabular models it shows that visual features alone contain some meaningful signals for predicting coffee quality.
@@ -163,13 +170,15 @@ The model performs worse on images where beans overlap or lighting is more incon
 ### Future Work 
 In future work, I would replace the current fixed feature approach with a fine-tuned CNN and increase the dataset size as well. This would probably improve the model's ability to capture more meaningful visual features + generalize better. 
 
-### Dataset Access 
-The dataset used in this project is publicly available online:
+## Requirements
+This project uses the following Python libraries:
 
-https://data.mendeley.com/datasets/52877z55vr/1
+- torch
+- torchvision
+- scikit-learn
+- streamlit
+- numpy
+- pillow
+- matplotlib 
 
-Due to size limitations, the dataset is not included in this repository.
-
-To run the project, download the dataset and place it in:
-
-CBD_Coffee Bean Dataset/
+Run the strealit app with streamlit run app.py
